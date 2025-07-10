@@ -39,13 +39,12 @@ export default function AboutMe() {
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
           >
-            <div className="relative flex justify-center">
+            <div className="relative flex justify-center p-2">
               <img
                 src="/profileImage.jpg"
                 alt="Profile"
                 className="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl object-cover shadow-2xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent rounded-2xl"></div>
             </div>
           </div>
 

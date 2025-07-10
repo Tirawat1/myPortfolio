@@ -1,80 +1,140 @@
-# My Portfolio
+# 🚀 Tirawat Pongpratisonthi - Portfolio Website
 
-A modern, responsive portfolio website built with Next.js and Tailwind CSS.
+A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. This portfolio showcases my skills, projects, and experience as a Full Stack Developer and Computer Science student.
 
-## Features
+![Portfolio Preview](https://via.placeholder.com/800x400/1e293b/60a5fa?text=Portfolio+Preview)
 
-- **Responsive Design**: Optimized for all device sizes
-- **Modern UI**: Clean and professional design with smooth animations
-- **Performance**: Built with Next.js for optimal performance
-- **SEO Friendly**: Proper meta tags and structured data
-- **Components**: Modular component structure for easy maintenance
+## ✨ Features
 
-## Tech Stack
+### 🎨 Design & UI
+- **Modern Glass Morphism Design** with backdrop blur effects
+- **Responsive Layout** optimized for all devices (mobile-first approach)
+- **Smooth Animations** with intersection observer and CSS transitions
+- **Dark Theme** with blue accent colors
+- **Interactive Elements** with hover effects and micro-animations
 
-- **Framework**: Next.js 14
-- **Styling**: Tailwind CSS
-- **Language**: TypeScript
-- **Icons**: React Icons
-- **Deployment**: Vercel
+### 📱 Sections
+- **Hero Landing** - Animated typing effect with role rotation
+- **About Me** - Personal introduction with social links
+- **Education** - Academic background with school logos
+- **Work Experience** - Professional experience timeline
+- **Skills & Tools** - Technology stack with icons
+- **Projects** - Portfolio projects with live demos
+- **Contact** - Professional contact information and direct communication
+## 🚀 Getting Started
 
-## Getting Started
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn package manager
 
-First, run the development server:
+### Installation
 
-```bash
+1. **Clone the repository**
+\`\`\`bash
+git clone https://github.com/Tirawat1/portfolio.git
+cd portfolio
+\`\`\`
+
+2. **Install dependencies**
+\`\`\`bash
+npm install
+# or
+yarn install
+\`\`\`
+
+3. **Run the development server**
+\`\`\`bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📁 Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Project Structure
-
-```
-src/
+\`\`\`
+portfolio/
 ├── app/
-│   ├── components/
+│   ├── components/          # React components
 │   │   ├── AboutMe.tsx
-│   │   ├── Contract.tsx
+│   │   ├── Contact.tsx
 │   │   ├── Education.tsx
 │   │   ├── HeroLanding.tsx
 │   │   ├── Navbar.tsx
-│   │   ├── PageTransition.tsx
 │   │   ├── Projects.tsx
-│   │   ├── SectionTransition.tsx
 │   │   ├── Skills.tsx
 │   │   └── WorkExperience.tsx
-│   ├── resource/
-│   │   └── iconData.tsx
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-└── public/
-    ├── heroLandingImage.svg
-    ├── obacProject.png
-    ├── profileImage.jpg
-    └── seniorProject.png
-```
+│   ├── globals.css          # Global styles
+│   ├── layout.tsx           # Root layout
+│   └── page.tsx             # Home page
+├── lib/
+│   └── iconData.tsx         # Icon data and utilities
+├── public/                  # Static assets
+├── README.md
+├── next.config.js
+└── package.json
+\`\`\`
 
-## Learn More
+### Adding New Sections
+1. Create a new component in `app/components/`
+2. Import and add it to `app/page.tsx`
+3. Update the navbar in `app/components/Navbar.tsx`
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Technologies Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Frontend
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **Lucide React** - Beautiful icons
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Development Tools
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Git** - Version control
 
-## Deploy on Vercel
+### Deployment
+- **Vercel** - Recommended for Next.js deployment
+- **Netlify** - Alternative deployment option
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📱 Responsive Design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The portfolio is fully responsive and optimized for:
+- **Mobile** (320px - 768px)
+- **Tablet** (768px - 1024px)
+- **Desktop** (1024px+)
+- **Large Screens** (1440px+)
+
+
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Contact
+
+**Tirawat Pongpratisonthi (Prem)**
+- **Email**: [Tirawat.pst@gmail.com](mailto:Tirawat.pst@gmail.com)
+- **LinkedIn**: [tirawat-pongpratisonthi](https://www.linkedin.com/in/tirawat-pongpratisonthi-00351324a/)
+- **GitHub**: [Tirawat1](https://github.com/Tirawat1)
+- **Portfolio**: [Your Portfolio URL]
+
+## 🙏 Acknowledgments
+
+- **Next.js Team** for the amazing framework
+- **Tailwind CSS** for the utility-first CSS framework
+- **Lucide** for the beautiful icons
+- **Vercel** for the deployment platform
+
+---
+
+⭐ **Star this repository if you found it helpful!**
+
+Made with ❤️ by [Tirawat Pongpratisonthi](https://github.com/Tirawat1)
