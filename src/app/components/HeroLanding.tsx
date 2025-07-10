@@ -97,7 +97,7 @@ export default function HeroLanding() {
 
             {/* Right Image */}
             <div
-              className="relative flex justify-center "
+              className="relative flex justify-center lg:justify-end"
             >
               <div className="relative">
                 {/* Main profile image */}
