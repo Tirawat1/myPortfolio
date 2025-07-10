@@ -1,4 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Portfolio
+
+A modern, responsive portfolio website built with Next.js and Tailwind CSS.
+
+## Features
+
+- **Responsive Design**: Optimized for all device sizes
+- **Modern UI**: Clean and professional design with smooth animations
+- **Performance**: Built with Next.js for optimal performance
+- **SEO Friendly**: Proper meta tags and structured data
+- **Components**: Modular component structure for easy maintenance
+
+## Tech Stack
+
+- **Framework**: Next.js 14
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Icons**: React Icons
+- **Deployment**: Vercel
 
 ## Getting Started
 
@@ -18,7 +36,33 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── AboutMe.tsx
+│   │   ├── Contract.tsx
+│   │   ├── Education.tsx
+│   │   ├── HeroLanding.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── PageTransition.tsx
+│   │   ├── Projects.tsx
+│   │   ├── SectionTransition.tsx
+│   │   ├── Skills.tsx
+│   │   └── WorkExperience.tsx
+│   ├── resource/
+│   │   └── iconData.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+└── public/
+    ├── heroLandingImage.svg
+    ├── obacProject.png
+    ├── profileImage.jpg
+    └── seniorProject.png
+```
 
 ## Learn More
 
