@@ -77,8 +77,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Email**: [Tirawat.pst@gmail.com](mailto:Tirawat.pst@gmail.com)
 - **LinkedIn**: [tirawat-pongpratisonthi](https://www.linkedin.com/in/tirawat-pongpratisonthi-00351324a/)
 - **GitHub**: [Tirawat1](https://github.com/Tirawat1)
-- **Portfolio**: [https://tirawat-portfolio.vercel.app/]
-
+- **Portfolio**: https://tirawat-portfolio.vercel.app/
 ## 🙏 Acknowledgments
 
 - **Next.js Team** for the amazing framework
