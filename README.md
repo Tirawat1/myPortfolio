@@ -2,7 +2,7 @@
 
 A modern, responsive portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. This portfolio showcases my skills, projects, and experience as a Full Stack Developer and Computer Science student.
 
-![Portfolio Preview](https://via.placeholder.com/800x400/1e293b/60a5fa?text=Portfolio+Preview)
+**Portfolio**: https://tirawat-portfolio.vercel.app/
 
 ## ✨ Features
 
@@ -77,8 +77,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Email**: [Tirawat.pst@gmail.com](mailto:Tirawat.pst@gmail.com)
 - **LinkedIn**: [tirawat-pongpratisonthi](https://www.linkedin.com/in/tirawat-pongpratisonthi-00351324a/)
 - **GitHub**: [Tirawat1](https://github.com/Tirawat1)
-- **Portfolio**: [Your Portfolio URL]
-
+- **Portfolio**: https://tirawat-portfolio.vercel.app/
 ## 🙏 Acknowledgments
 
 - **Next.js Team** for the amazing framework
