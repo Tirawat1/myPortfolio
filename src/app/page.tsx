@@ -9,7 +9,7 @@ import Contact from "./components/Contract"
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-background overflow-x-hidden">
       <Navbar />
       <main className="w-full pt-16 overflow-x-hidden">
         <HeroLanding />

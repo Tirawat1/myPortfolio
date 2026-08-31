@@ -1,15 +1,36 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ChevronDown } from "lucide-react"
+import { ArrowDown, Github, Linkedin } from "lucide-react"
+import { useLanguage } from "../i18n/LanguageContext"
 
 export default function HeroLanding() {
+  const { t } = useLanguage()
+  const roles = t.hero.roles
+
   const [text, setText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)
   const [loopNum, setLoopNum] = useState(0)
   const [typingSpeed, setTypingSpeed] = useState(150)
+  const [ruleVisible, setRuleVisible] = useState(false)
+  const [heroImgVisible, setHeroImgVisible] = useState(false)
 
-  const roles = ["FullSnack🍦🍟🍕 Developer", "Full Stack Developer", "Software Engineer", "Problem Solver"]
+  useEffect(() => {
+    setLoopNum(0)
+    setText("")
+    setIsDeleting(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roles])
+
+  useEffect(() => {
+    const timer = setTimeout(() => setRuleVisible(true), 300)
+    return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => setHeroImgVisible(true), 200)
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     const handleTyping = () => {
@@ -21,7 +42,7 @@ export default function HeroLanding() {
       setTypingSpeed(isDeleting ? 30 : 150)
 
       if (!isDeleting && text === fullText) {
-        setTimeout(() => setIsDeleting(true), 500)
+        setTimeout(() => setIsDeleting(true), 800)
       } else if (isDeleting && text === "") {
         setIsDeleting(false)
         setLoopNum(loopNum + 1)
@@ -37,107 +58,97 @@ export default function HeroLanding() {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Parallax Background */}
-      <div
-        className="absolute inset-0 bg-gradient-to-r from-purple-800/20 to-blue-800/20"
-      ></div>
-
-      {/* Animated background elements with parallax */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
-        ></div>
-        <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"
-        ></div>
-      </div>
-
+    <section id="home" className="min-h-screen flex items-center relative overflow-hidden pt-24 pb-16 sm:pt-20">
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-6 items-center p-6">
-            {/* Left Content */}
-            <div className="space-y-8">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Hi, I'm{" "}
-                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent line-clamp-2">
-                  Tirawat Pongpratisonthi
-                </span>
+        <div className="max-w-7xl mx-auto registration-guide pl-6 sm:pl-10">
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 lg:gap-16 items-center">
+            {/* Masthead */}
+            <div className="space-y-6">
+              <span className="font-label text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                {t.hero.greeting}
+              </span>
+
+              <h1 className="font-display font-black uppercase text-5xl sm:text-6xl lg:text-7xl leading-[0.95] text-foreground">
+                Tirawat
+                <br />
+                Pongpratisonthi
               </h1>
 
-              <div className="text-2xl sm:text-3xl lg:text-4xl text-gray-300 h-12">
-                I'm a{" "}
-                <span className="text-blue-400 font-semibold">
+              <div className={`press-rule w-full max-w-md ${ruleVisible ? "is-visible" : ""}`} />
+
+              <div className="font-label text-lg sm:text-xl text-foreground/90 min-h-[2.5rem] sm:min-h-[2.75rem] flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <span className="text-muted-foreground uppercase text-xs tracking-widest">Now setting:</span>
+                <span className="ink-emphasis dark:text-ink-400">
                   {text}
-                  <span className="animate-pulse">|</span>
+                  <span className="animate-pulse">_</span>
                 </span>
               </div>
 
-              <p className="text-lg sm:text-xl text-gray-400 leading-relaxed max-w-xl">
-                Passionate about creating innovative solutions and building amazing digital experiences. Welcome to my
-                portfolio where creativity meets functionality.
+              <p className="font-sans text-base sm:text-lg text-foreground/80 leading-relaxed max-w-[62ch]">
+                {t.hero.intro}
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
                   onClick={scrollToAbout}
-                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105"
+                  className="press-down font-label text-sm uppercase tracking-widest px-6 py-3 bg-ink-500 dark:bg-ink-400 text-paper dark:text-[#1c1712] border-2 border-ink-500 dark:border-ink-400 hover:bg-ink-600 dark:hover:bg-ink-300 transition-colors"
                 >
-                  Explore My Work
+                  {t.hero.ctaExplore}
                 </button>
                 <button
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="px-6 sm:px-8 py-3 border-2 border-blue-400 text-blue-400 rounded-full font-semibold hover:bg-blue-400 hover:text-white transition-all duration-300 text-center text-sm sm:text-base"
+                  className="press-down font-label text-sm uppercase tracking-widest px-6 py-3 border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
                 >
-                  Get In Touch
+                  {t.hero.ctaContact}
                 </button>
 
+                <div className="flex items-center gap-3 ml-1">
+                  <a
+                    href="https://github.com/Tirawat1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className="press-down text-muted-foreground hover:text-foreground"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/tirawat-pongpratisonthi-00351324a/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="press-down text-muted-foreground hover:text-foreground"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                </div>
               </div>
             </div>
 
-            {/* Right Image */}
-            <div
-              className="relative flex justify-center lg:justify-end"
-            >
-              <div className="relative">
-                {/* Main profile image */}
-                <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-                  <img
-                    src="/heroLandingImage.svg"
-                    alt="Profile"
-                    className="w-full h-full rounded-full object-cover shadow-2xl border-4 border-blue-400/30"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent rounded-full"></div>
-                </div>
-
-                {/* Floating elements */}
-                <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center animate-bounce">
-                  <span className="text-white text-2xl">💻</span>
-                </div>
-
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center animate-pulse">
-                  <span className="text-white text-xl">🚀</span>
-                </div>
-
-                <div className="absolute top-1/2 -left-8 w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center animate-ping">
-                  <span className="text-white text-sm">⚡</span>
-                </div>
-
-                {/* Background decoration */}
-                <div className="absolute inset-0 -z-10">
-                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl transform scale-110"></div>
-                </div>
+            {/* Falling illustration */}
+            <div className="relative flex justify-center lg:justify-end">
+              <div
+                className={`hero-fall w-72 sm:w-96 lg:w-full lg:max-w-md ${heroImgVisible ? "is-visible" : ""}`}
+              >
+                <img
+                  src="/heroFalling.png"
+                  alt="Illustration of a developer working on a laptop, surrounded by floating gear"
+                  className="animate-float w-full h-auto"
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+      <button
+        onClick={scrollToAbout}
+        aria-label="Scroll to About"
+        className="hidden sm:flex flex-col items-center gap-2 absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors press-down"
       >
-        <ChevronDown className="text-white w-8 h-8" />
-      </div>
+        <span className="font-label text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+        <ArrowDown className="w-4 h-4 animate-press-drop" />
+      </button>
     </section>
   )
 }

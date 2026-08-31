@@ -1,21 +1,30 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
-
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Education", href: "#education" },
-  { name: "Experience", href: "#experience" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
-]
+import { Menu, X, Sun, Moon, Languages } from "lucide-react"
+import { useTheme } from "next-themes"
+import { useLanguage } from "../i18n/LanguageContext"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
+  const { language, toggleLanguage, t } = useLanguage()
+
+  const navItems = [
+    { name: t.nav.home, href: "#home" },
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.education, href: "#education" },
+    { name: t.nav.experience, href: "#experience" },
+    { name: t.nav.skills, href: "#skills" },
+    { name: t.nav.projects, href: "#projects" },
+    { name: t.nav.contact, href: "#contact" },
+  ]
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +47,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const scrollToSection = (href: string) => {
@@ -49,38 +59,85 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 w-full bg-slate-900/95 backdrop-blur-sm z-50 border-b border-slate-700">
+    <nav className="fixed top-0 left-0 right-0 w-full bg-background z-50 border-b-2 border-foreground/10 transition-colors duration-300">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 w-full">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <span className="text-xl sm:text-2xl font-bold text-white">Portfolio</span>
-          </div>
+          {/* Masthead mark */}
+          <button
+            onClick={() => scrollToSection("#home")}
+            className="flex items-center gap-2 flex-shrink-0 group"
+            aria-label="Scroll to top"
+          >
+            <span className="ink-stamp w-9 h-9 flex items-center justify-center font-display font-bold text-sm">
+              TP
+            </span>
+            <span className="hidden sm:block font-label text-[11px] uppercase tracking-widest text-muted-foreground">
+              Pongpratisonthi&nbsp;Press
+            </span>
+          </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="flex items-baseline space-x-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    activeSection === item.href.substring(1)
-                      ? "bg-blue-600 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                  }`}
-                >
-                  {item.name}
-                </button>
-              ))}
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-baseline gap-1">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.href.substring(1)
+                return (
+                  <button
+                    key={item.href}
+                    onClick={() => scrollToSection(item.href)}
+                    className={`relative px-3 py-2 font-label text-xs uppercase tracking-widest transition-colors press-down ${
+                      isActive ? "text-ink-500 dark:text-ink-400" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {item.name}
+                    <span
+                      className={`absolute left-3 right-3 -bottom-0.5 h-0.5 bg-ink-500 dark:bg-ink-400 origin-left transition-transform duration-300 ${
+                        isActive ? "scale-x-100" : "scale-x-0"
+                      }`}
+                    />
+                  </button>
+                )
+              })}
+            </div>
+
+            <div className="flex items-center gap-2 pl-3 border-l-2 border-foreground/10">
+              <button
+                onClick={toggleLanguage}
+                aria-label="Toggle language"
+                className="flex items-center gap-1 px-3 py-2 font-label text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground press-down"
+              >
+                <Languages className="w-4 h-4" />
+                {language === "en" ? "EN" : "TH"}
+              </button>
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                aria-label="Toggle theme"
+                className="p-2 text-muted-foreground hover:text-foreground press-down"
+              >
+                {mounted && theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
             </div>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex-shrink-0">
+          {/* Mobile controls */}
+          <div className="md:hidden flex items-center gap-1">
+            <button
+              onClick={toggleLanguage}
+              aria-label="Toggle language"
+              className="flex items-center justify-center w-9 h-9 text-muted-foreground hover:text-foreground press-down"
+            >
+              <Languages className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              aria-label="Toggle theme"
+              className="flex items-center justify-center w-9 h-9 text-muted-foreground hover:text-foreground press-down"
+            >
+              {mounted && theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center justify-center w-8 h-8 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+              className="flex items-center justify-center w-9 h-9 text-muted-foreground hover:text-foreground press-down focus:outline-none"
               aria-expanded={isOpen}
               aria-label="Toggle navigation menu"
             >
@@ -91,16 +148,16 @@ export default function Navbar() {
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <div className="md:hidden w-full border-t border-slate-700">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-slate-900 w-full">
+          <div className="md:hidden w-full border-t-2 border-foreground/10">
+            <div className="py-2 w-full bg-background">
               {navItems.map((item) => (
                 <button
-                  key={item.name}
+                  key={item.href}
                   onClick={() => scrollToSection(item.href)}
-                  className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  className={`block w-full text-left px-1 py-3 font-label text-sm uppercase tracking-widest border-b border-foreground/10 transition-colors ${
                     activeSection === item.href.substring(1)
-                      ? "bg-blue-600 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                      ? "text-ink-500 dark:text-ink-400"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {item.name}

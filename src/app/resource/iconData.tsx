@@ -1,4 +1,5 @@
 // Import individual icons from devicons-react
+import GoOriginal from "devicons-react/icons/GoOriginal";
 import COriginal from "devicons-react/icons/COriginal";
 import CplusplusOriginal from "devicons-react/icons/CplusplusOriginal";
 import CsharpOriginal from "devicons-react/icons/CsharpOriginal";
@@ -25,114 +26,125 @@ import GitOriginal from "devicons-react/icons/GitOriginal";
 import DockerOriginal from "devicons-react/icons/DockerOriginal";
 import PostmanOriginal from "devicons-react/icons/PostmanOriginal";
 import GrpcOriginal from "devicons-react/icons/GrpcOriginal";
+import DbeaverOriginal from "devicons-react/icons/DbeaverOriginal";
 
 export interface TechItem {
   name: string;
   icon: React.ComponentType<{ size?: string; color?: string; className?: string }>;
-  category: 'programming' | 'framework' | 'database' | 'tool';
+  category: 'backend' | 'frontend' | 'database' | 'tool';
 }
 
 export const techStackData: TechItem[] = [
-  // Programming Languages
+  // Backend languages, frameworks & protocols
+  {
+    name: 'Go',
+    icon: GoOriginal,
+    category: 'backend',
+  },
   {
     name: 'C',
     icon: COriginal,
-    category: 'programming',
+    category: 'backend',
   },
   {
     name: 'C++',
     icon: CplusplusOriginal,
-    category: 'programming',
+    category: 'backend',
   },
   {
     name: 'C#',
     icon: CsharpOriginal,
-    category: 'programming',
+    category: 'backend',
   },
   {
     name: 'Python',
     icon: PythonOriginal,
-    category: 'programming',
+    category: 'backend',
   },
   {
     name: 'Java',
     icon: JavaOriginal,
-    category: 'programming',
-  },
-  {
-    name: 'JavaScript',
-    icon: JavascriptOriginal,
-    category: 'programming',
-  },
-  {
-    name: 'TypeScript',
-    icon: TypescriptOriginal,
-    category: 'programming',
-  },
-  {
-    name: 'SQL',
-    icon: MysqlOriginal,
-    category: 'programming',
-  },
-  {
-    name: 'Dart',
-    icon: DartOriginal,
-    category: 'programming',
-  },
-  
-  // Frameworks and Libraries
-  {
-    name: 'Laravel',
-    icon: LaravelOriginal,
-    category: 'framework',
-  },
-  {
-    name: 'Tailwind CSS',
-    icon: TailwindcssOriginal,
-    category: 'framework',
-  },
-  {
-    name: 'Vue.js',
-    icon: VuejsOriginal,
-    category: 'framework',
-  },
-  {
-    name: 'Nuxt.js',
-    icon: NuxtjsOriginal,
-    category: 'framework',
-  },
-  {
-    name: 'React',
-    icon: ReactOriginal,
-    category: 'framework',
-  },
-  {
-    name: 'Spring Boot',
-    icon: SpringOriginal,
-    category: 'framework',
-  },
-  {
-    name: 'Next.js',
-    icon: NextjsOriginal,
-    category: 'framework',
+    category: 'backend',
   },
   {
     name: 'Dotnet Core',
     icon: DotnetcoreOriginal,
-    category: 'framework',
+    category: 'backend',
+  },
+  {
+    name: 'gRPC',
+    icon: GrpcOriginal,
+    category: 'backend',
   },
   {
     name: 'RabbitMQ',
     icon: RabbitmqOriginal,
-    category: 'framework',
+    category: 'backend',
+  },
+  {
+    name: 'Spring Boot',
+    icon: SpringOriginal,
+    category: 'backend',
+  },
+  {
+    name: 'Laravel',
+    icon: LaravelOriginal,
+    category: 'backend',
+  },
+
+  // Frontend languages & frameworks
+  {
+    name: 'JavaScript',
+    icon: JavascriptOriginal,
+    category: 'frontend',
+  },
+  {
+    name: 'TypeScript',
+    icon: TypescriptOriginal,
+    category: 'frontend',
+  },
+  {
+    name: 'Dart',
+    icon: DartOriginal,
+    category: 'frontend',
+  },
+  {
+    name: 'Tailwind CSS',
+    icon: TailwindcssOriginal,
+    category: 'frontend',
+  },
+  {
+    name: 'Vue.js',
+    icon: VuejsOriginal,
+    category: 'frontend',
+  },
+  {
+    name: 'Nuxt.js',
+    icon: NuxtjsOriginal,
+    category: 'frontend',
+  },
+  {
+    name: 'React',
+    icon: ReactOriginal,
+    category: 'frontend',
+  },
+  {
+    name: 'Next.js',
+    icon: NextjsOriginal,
+    category: 'frontend',
   },
   {
     name: 'Flutter',
     icon: FlutterOriginal,
-    category: 'framework',
+    category: 'frontend',
   },
-  
+
   // Databases
+  {
+    name: 'SQL',
+    icon: MysqlOriginal,
+    category: 'database',
+  },
   {
     name: 'MySQL',
     icon: MysqlOriginal,
@@ -153,7 +165,7 @@ export const techStackData: TechItem[] = [
     icon: MongodbOriginal,
     category: 'database',
   },
-  
+
   // Tools
   {
     name: 'Git',
@@ -171,33 +183,33 @@ export const techStackData: TechItem[] = [
     category: 'tool',
   },
   {
-    name: 'gRPC',
-    icon: GrpcOriginal,
+    name: 'DBeaver',
+    icon: DbeaverOriginal,
     category: 'tool',
   },
 ];
 
 // Helper functions to filter by category
-export const getProgrammingLanguages = () => 
-  techStackData.filter(item => item.category === 'programming');
+export const getBackend = () =>
+  techStackData.filter(item => item.category === 'backend');
 
-export const getFrameworksAndLibraries = () => 
-  techStackData.filter(item => item.category === 'framework');
+export const getFrontend = () =>
+  techStackData.filter(item => item.category === 'frontend');
 
-export const getDatabases = () => 
+export const getDatabases = () =>
   techStackData.filter(item => item.category === 'database');
 
-export const getTools = () => 
+export const getTools = () =>
   techStackData.filter(item => item.category === 'tool');
 
 // Helper function to get tech by name
-export const getTechByName = (name: string) => 
+export const getTechByName = (name: string) =>
   techStackData.find(item => item.name.toLowerCase() === name.toLowerCase());
 
 // Export organized data by category
 export const organizedTechStack = {
-  programming: getProgrammingLanguages(),
-  frameworks: getFrameworksAndLibraries(),
+  backend: getBackend(),
+  frontend: getFrontend(),
   databases: getDatabases(),
   tools: getTools(),
 };
